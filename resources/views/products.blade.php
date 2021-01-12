@@ -21,7 +21,9 @@
                   <div class="card-body">
                     <h5 class="card-title">{{ $product->title }}</h5>
                     <p class="card-text">{{ $product->description }}</p>
+
                     <a href="{{ url('productos/categoria/'.$product->category->slug) }}" class="btn btn-primary">{{ $product->category->title }}</a>
+
                   </div>
                 </div>
               </article>

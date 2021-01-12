@@ -16,7 +16,13 @@ Route::get('/', function () {
 });
 
 Route::get('/products', function(){
-    $products = App\Product::all();
+    /**
+     * Solucion al problema n+1
+     *
+     * Utilizando el metodo with y pasando como argumento la relacion
+     * soluciona este inconveniente.
+     */
+    $products = App\Product::with('category')->get();
 
     return view('products', compact('products'));
 });
