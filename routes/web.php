@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/products', function(){
+    $products = App\Product::all();
+
+    return view('products', compact('products'));
+});
