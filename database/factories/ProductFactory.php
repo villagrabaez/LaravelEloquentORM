@@ -11,5 +11,11 @@ $factory->define(Product::class, function (Faker $faker) {
         'title' => $faker->sentence(4),
         'slug'  => $faker->slug(4),
         'category_id' => factory(ProductCategory::class),
+        'description'       => $faker->paragraph,
+        'page_title'        => $faker->sentence,
+        'meta_description'  => $faker->sentence,
+        'featured'          => $faker->boolean,
+        'image'             => sprintf('http://lorempixel.com/500/250/'),
+        'status'            => $faker->randomElement(['draft', 'pending', 'published'])
     ];
 });

@@ -18,6 +18,12 @@ class CreateProductCategoriesTable extends Migration
 
             $table->string('title');
             $table->string('slug');
+            // additional fields
+            $table->mediumText('description');
+            $table->string('page_title')->nullable();
+            $table->string('meta_description');
+            $table->boolean('featured')->default(false);
+            $table->string('image');
 
             $table->timestamps();
         });
