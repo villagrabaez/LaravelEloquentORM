@@ -14,6 +14,11 @@
     <body>
       <div class="container mt-5">
         <div class="row">
+          <em class="col alert alert-success">
+            Tenemos un total de {{ $products->total() }} productos!
+          </em>
+        </div>
+        <div class="row">
             @foreach($products as $product)
               <article class="col-md-4">
                 <div class="card">
@@ -28,6 +33,9 @@
                 </div>
               </article>
             @endforeach
+        </div>
+        <div class="row d-flex justify-content-center">
+          {{ $products->links() }}
         </div>
       </div>
     </body>

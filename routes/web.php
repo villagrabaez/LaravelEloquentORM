@@ -34,7 +34,7 @@ Route::get('/products', function(){
         //     $query->select('id', 'title', 'slug');
         // }])
 
-        ->get();
+        ->paginate(); // default value 15
 
     return view('products', compact('products'));
 });
