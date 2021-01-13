@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/products', function(){
+Route::get('/products', function(\Illuminate\Http\Request $request){
     /**
      * Solucion al problema n+1
      *
@@ -28,6 +28,9 @@ Route::get('/products', function(){
     $products = App\Product::query()
         ->select(['title', 'slug', 'image', 'description', 'category_id'])
         ->with('category:id,title,slug')
+        ->when($request->input('categoria'), function($query, $categoryId) {
+            $query->where('category_id', $categoryId);
+        })
 
         // Alternativa al la linea anterior en caso de necesitar un query más complejo
         // ->with(['category' => function($query){

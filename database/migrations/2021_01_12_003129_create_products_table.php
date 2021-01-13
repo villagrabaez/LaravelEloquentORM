@@ -28,6 +28,8 @@ class CreateProductsTable extends Migration
 
             $table->unsignedBigInteger('category_id'); // ->foreignId()
 
+            $table->foreign('category_id')->references('id')->on('product_categories');
+
             $table->timestamps();
         });
     }
@@ -40,5 +42,6 @@ class CreateProductsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('products');
+        $table->dropForeign(['category_id']);
     }
 }
